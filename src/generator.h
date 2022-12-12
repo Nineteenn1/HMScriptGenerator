@@ -20,8 +20,8 @@ namespace Homemade
         std::string FullNameSetup();
         std::string GetScriptNameInput();
         std::string GetPathInput();
-
-        
+        // void LoadBaseScript(const std::string& path);
+        // TODO: (?) Add a way to load the base script from a file        
     private:
         std::ofstream output;
         std::string scriptName;
