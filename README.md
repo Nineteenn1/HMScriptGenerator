@@ -1,4 +1,4 @@
-# Lua Script Generator
+# Script Generator
 
 This library generates lua scripts.
 
@@ -7,11 +7,11 @@ This library generates lua scripts.
 Example usage of the library:
 
 ```cpp
-#include "generator.h"
+#include "HMScriptGenerator.h"
 
 int main()
 {
-    Homemade::LuaScriptGenerator lsg;
-    lsg.GenerateNewScript();
+    Homemade::HMScriptGenerator hmsg;
+    hmsg.GenerateNewScript();
 }
 ```

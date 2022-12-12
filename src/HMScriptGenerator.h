@@ -5,7 +5,7 @@
 
 namespace Homemade
 {
-    class LuaScriptGenerator
+    class HMScriptGenerator
     {
     public:
         void GenerateNewScript();
@@ -20,6 +20,7 @@ namespace Homemade
         std::string FullNameSetup();
         std::string GetScriptNameInput();
         std::string GetPathInput();
+        std::string GetFormatInput();
         // void LoadBaseScript(const std::string& path);
         // TODO: (?) Add a way to load the base script from a file        
     private:
@@ -27,7 +28,8 @@ namespace Homemade
         std::string scriptName;
         std::string fullScriptName;
         std::string filePath;
-
+        std::string fileFormat;
+        
         std::string baseScript = 
             "function First()\n"
             "\n"

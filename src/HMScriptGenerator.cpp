@@ -1,11 +1,12 @@
-#include "generator.h"
+#include "HMScriptGenerator.h"
 
 namespace Homemade
 {
-    void LuaScriptGenerator::GenerateNewScript()
+    void HMScriptGenerator::GenerateNewScript()
     {
         std::string scriptName = GetScriptNameInput();
         std::string filePath = GetPathInput();
+        std::string fileFormat = GetFormatInput();
 
         CheckIfPathExists(filePath);
         auto fullScriptName = FullNameSetup();
@@ -13,7 +14,7 @@ namespace Homemade
         output << GetBaseScript();
     }
 
-    void LuaScriptGenerator::CheckIfPathExists(const std::string& path)
+    void HMScriptGenerator::CheckIfPathExists(const std::string& path)
     {
         if (!std::filesystem::exists(path) || !std::filesystem::is_directory(path))
         {
@@ -21,17 +22,17 @@ namespace Homemade
         }
     }
 
-    void LuaScriptGenerator::ScriptSetup()
+    void HMScriptGenerator::ScriptSetup()
     {
         output = static_cast<std::ofstream>(fullScriptName);
     }
 
-    void LuaScriptGenerator::InsertBaseScript(const std::string& baseScript)
+    void HMScriptGenerator::InsertBaseScript(const std::string& baseScript)
     {
         output << baseScript << std::endl;
     }
 
-    std::string LuaScriptGenerator::GetPathInput()
+    std::string HMScriptGenerator::GetPathInput()
     {
         std::cout << "\n" << "Enter the path of the script (always use slashes): ";
         std::cin >> filePath;            
@@ -39,14 +40,22 @@ namespace Homemade
         return filePath;
     }
 
-    std::string LuaScriptGenerator::FullNameSetup()
+    std::string HMScriptGenerator::GetFormatInput()
     {
-        fullScriptName = filePath + scriptName + ".lua";
+        std::cout << "\n" << "Enter the format of the script (E.g. .lua, .cpp): ";
+        std::cin >> fileFormat;
+
+        return fileFormat;
+    }
+
+    std::string HMScriptGenerator::FullNameSetup()
+    {
+        fullScriptName = filePath + scriptName + fileFormat;
 
         return fullScriptName;
     }
 
-    std::string LuaScriptGenerator::GetScriptNameInput()
+    std::string HMScriptGenerator::GetScriptNameInput()
     {
         std::cout << "Enter the name of the script (without the extension): ";
         std::cin >> scriptName;
