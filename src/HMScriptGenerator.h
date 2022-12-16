@@ -22,11 +22,12 @@ namespace Homemade
         std::string GetPathInput();
         std::string GetFormatInput();
         // void LoadBaseScript(const std::string& path);
-        // TODO: (?) Add a way to load the base script from a file        
+        // TODO: (?) Add a way to load the base script from a file
     private:
         std::ofstream output;
         std::string scriptName;
         std::string fullScriptName;
+        // TODO: Handle big directories 
         std::string filePath;
         std::string fileFormat;
         
